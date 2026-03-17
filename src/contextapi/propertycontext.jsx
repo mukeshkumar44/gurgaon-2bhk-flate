@@ -5,7 +5,7 @@ import axios from "axios";
 
 const PropertyContext = createContext();
 
-const DEFAULT_DOMAIN = "www.2bhkflatforsaleinfaridabad.com";
+const DEFAULT_DOMAIN = "www.2bhkflatsforsaleingurgaon.com";
 
 export const PropertyProvider = ({ children }) => {
 
