@@ -164,8 +164,8 @@ export default function PropertyDetails({ propertyy }) {
 
           <div className="mt-6 space-y-4 text-sm text-gray-600 leading-relaxed max-w-4xl">
 
-            {propertyy?.description2?.length > 0 ? (
-              propertyy.description2.map((text, i) => (
+            {propertyy?.description?.length > 0 ? (
+              propertyy.description.map((text, i) => (
                 <p key={i}>{text}</p>
               ))
             ) : (

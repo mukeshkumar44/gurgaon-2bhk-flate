@@ -139,7 +139,7 @@ export default function Properties() {
                   </div>
 
                   <p className="text-sm text-gray-500 mt-4 line-clamp-2">
-                    {property.description2 ||
+                    {property.description ||
                       "Premium commercial/residential space offering strong rental potential and long-term appreciation."}
                   </p>
 
