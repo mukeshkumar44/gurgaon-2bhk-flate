@@ -1,40 +1,31 @@
-import React from 'react'
+import React from "react";
+import BlogList from "./BlogList";
 
-import { headers } from "next/headers";
-import BlogList from './BlogList';
 export async function generateMetadata() {
-  const h = await headers();
-  const domain = h.get("host") || "localhost";
-
-  // www remove
-  const cleanDomain = domain.replace(/^www\./, "");
-
   return {
-    title: "Property & Real Estate Blogs | Trusted Property Dealer",
+    title: "2BHK Flat for Sale in Gurgaon Blogs | Price Trends & Buying Guide",
     description:
-      "Read latest property and real estate blogs. Get house buying tips, flat rent guides, plot investment ideas and property news.",
+      "Explore blogs on 2BHK flats for sale in Gurgaon. Get expert insights on pricing, best locations, investment tips and home buying guides for Gurgaon properties.",
     keywords: [
-      "property blogs",
-      "real estate blogs",
-      "house buying tips",
-      "flat rent guide",
-      "plot investment",
-      "property news"
+      "2BHK flat for sale in Gurgaon",
+      "buy 2bhk Gurgaon",
+      "Gurgaon property investment",
+      "2bhk price in Gurgaon",
+      "best areas in Gurgaon for flats",
+      "Gurgaon real estate blogs"
     ],
     alternates: {
-      canonical: `https://${cleanDomain}/blog`
+      canonical: "www.2bhkflatsforsaleingurgaon.com/blog", // 🔥 apna real domain yaha replace karna
     },
-  }
+  };
 }
 
-
-
-const page = () => {
+const Page = () => {
   return (
     <div className="min-h-screen bg-blue-50">
-    <BlogList/>
+      <BlogList />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default Page;
