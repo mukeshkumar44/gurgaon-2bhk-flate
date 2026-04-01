@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-
+import Link from "next/link";
 const HeroSection = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -69,7 +69,7 @@ const HeroSection = () => {
 
         {/* LEFT SIDE */}
         <div className="md:col-span-7 lg:col-span-8 text-white">
-          <h1 className="text-4xl lg:text-5xl font-bold mb-5 leading-tight">
+          <h1 className="text-2xl lg:text-4xl font-bold mb-5 leading-tight">
             2BHK Flats for Sale in{" "}
             <span className="bg-white text-black px-2 py-1 rounded">
               Gurgaon
@@ -98,6 +98,15 @@ const HeroSection = () => {
             2BHK flats for sale in Gurgaon, making your home-buying journey
             smooth, transparent, and stress-free.
           </p>
+          <Link href="/2bhk-flat-for-sale">
+  <button className="relative overflow-hidden bg-white text-[#0046FF] px-6 py-3 rounded-xl font-semibold shadow-md transition-all duration-300 hover:bg-white hover:shadow-xl hover:scale-105 mt-4 cursor-pointer">
+    
+    <span className="relative z-10">Learn More</span>
+
+    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] hover:translate-x-[100%] transition duration-700"></span>
+  
+  </button>
+</Link>
         </div>
 
         {/* RIGHT FORM */}

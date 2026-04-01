@@ -1,5 +1,5 @@
 import FilterProperties from "./FilterProperties";
-import Proprtes from "./Proprtes";
+
 import SidebarEnquiryForm from "@/components/SidebarEnquiryForm";
 
 export default async function Page({ params }) {
