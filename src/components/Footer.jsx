@@ -3,33 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const locations = [
-  'Ashok Vihar',           'Ashok Vihar Phase 2', 'DLF Phase 1',
-  'DLF Phase 2',           'DLF Phase 4',         'MG Road',
-  'Manesar',               'New Palam Vihar',     'Palam Vihar',
-  'Palam Vihar Extension', 'Sadar Bazar',         'Sector 1',
-  'Sector 102',            'Sector 103',          'Sector 106',
-  'Sector 107',            'Sector 108',          'Sector 109',
-  'Sector 10A',            'Sector 11',           'Sector 111',
-  'Sector 112',            'Sector 113',          'Sector 2',
-  'Sector 25',             'Sector 28',           'Sector 3',
-  'Sector 30',             'Sector 31',           'Sector 33',
-  'Sector 37D',            'Sector 3A',           'Sector 41',
-  'Sector 45',             'Sector 47',           'Sector 51',
-  'Sector 53',             'Sector 56',           'Sector 57',
-  'Sector 58',             'Sector 6',            'Sector 60',
-  'Sector 61',             'Sector 62',           'Sector 63',
-  'Sector 63A',            'Sector 65',           'Sector 66',
-  'Sector 67',             'Sector 67A',          'Sector 68',
-  'Sector 69',             'Sector 76',           'Sector 77',
-  'Sector 78',             'Sector 8',            'Sector 81',
-  'Sector 82',             'Sector 83',           'Sector 84',
-  'Sector 85',             'Sector 86',           'Sector 88',
-  'Sector 89',             'Sector 91',           'Sector 92',
-  'Sector 93',             'Sector 95',           'Sector 99',
-  'South City 1',          'South City 2',        'Sushant Lok Phase 2',
-  'Sushant Lok Phase 3',   'Udyog Vihar'
-];
+import { locations } from "../data/locations";
 
 const createSlug = (location) => {
   return location
@@ -90,7 +64,7 @@ export default function Footer() {
                   px-3 py-1.5 rounded-md shadow-lg
                   border border-[#0046FF]/40 z-[9999]
                   pointer-events-none">
-                  2BHK Flats For Sale in {loc}
+                  2BHK Flats For Sale in {loc}, Gurgaon
                 </div>
 
               </div>

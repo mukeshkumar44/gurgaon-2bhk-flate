@@ -68,7 +68,8 @@ export default function Properties() {
   }
 
   return (
-    <section className="bg-blue-50 px-4 py-16">
+    <section id="locations"
+    className="bg-blue-50 px-4 py-16">
 
       {/* ================= HEADING ================= */}
       <div className="max-w-7xl mx-auto  mb-14">

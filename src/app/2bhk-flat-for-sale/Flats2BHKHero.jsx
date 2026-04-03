@@ -212,7 +212,7 @@ export default function Flats2BHKHero() {
   </p>
 
   {/* CTA Button */}
-  <Link href="/">
+  <Link href="/#locations">
     <button className="mt-4 inline-flex items-center gap-2 bg-gradient-to-r from-[#0046FF] to-[#5A8DFF] text-white px-6 py-2.5 rounded-lg font-medium shadow-md hover:opacity-90 transition">
       Explore More Locations →
     </button>
