@@ -32,7 +32,7 @@ const Navbar = () => {
   }}
               className="text-xl sm:text-2xl font-bold tracking-wide text-white  transition duration-300"
             >
-              2BHK Flat for sale Gurgaon
+              DA
             </Link>
 
             {/* ================= DESKTOP LINKS ================= */}
