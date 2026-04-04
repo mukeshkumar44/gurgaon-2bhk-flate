@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "2BHK Flat for Rent Faridabad",
-  description: "Find verified 2BHK Flat for rent in Faridabad with best deals.",
+  title: "2BHK Flat for Sale Faridabad",
+  description: "Find verified 2BHK Flat for sale in Faridabad with best deals.",
 };
 
 export default function RootLayout({ children }) {
