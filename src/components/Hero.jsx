@@ -98,7 +98,7 @@ const HeroSection = () => {
             2BHK flats for sale in Gurgaon, making your home-buying journey
             smooth, transparent, and stress-free.
           </p>
-          <Link href="/2bhk-flat-for-sale">
+          <Link href="/how-it-works">
   <button className="relative overflow-hidden bg-white text-[#0046FF] px-6 py-3 rounded-xl font-semibold shadow-md transition-all duration-300 hover:bg-white hover:shadow-xl hover:scale-105 mt-4 cursor-pointer">
     
     <span className="relative z-10">Learn More</span>

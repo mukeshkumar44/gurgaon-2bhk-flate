@@ -27,7 +27,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto overflow-visible">
 
         {/* BRAND */}
-        {/* <div className="mb-10">
+        <div className="mb-10">
           <h2 className="text-2xl font-bold text-white">
             2BHK Flats for Sale in{" "}
             <span className="text-[#0046FF]">Faridabad</span>
@@ -36,7 +36,7 @@ export default function Footer() {
           <p className="text-gray-400 mt-4 max-w-2xl leading-relaxed">
             Discover premium 2BHK flats in prime sectors with excellent connectivity and investment value.
           </p>
-        </div> */}
+        </div>
 
         {/* LOCATIONS */}
         <div className="mb-10 overflow-visible">
@@ -50,7 +50,7 @@ export default function Footer() {
               <div key={index} className="relative group overflow-visible">
 
                 <Link
-                  href={`/${createSlug(loc)}`}
+                  href={`/2bhk-flat-for-sale-in-${createSlug(loc)}`}
                   className="block truncate text-gray-400 hover:text-white transition duration-300"
                 >
                   2BHK Flats For Sale in {loc}
@@ -94,7 +94,42 @@ export default function Footer() {
 
           </div>
         </div>
+{/* 🔥 Bottom Navigation Buttons - CENTER */}
+<div className="border-t border-[#1a2238] pt-6 mt-10 mb-6">
+  <div className="flex justify-center items-center">
+    
+    <div className="flex flex-wrap gap-6 justify-center text-sm">
+      <Link
+        href="/about"
+        className="text-gray-400 hover:text-[#0046FF] transition"
+      >
+        About
+      </Link>
 
+      <Link
+        href="/blog"
+        className="text-gray-400 hover:text-[#0046FF] transition"
+      >
+        Blog
+      </Link>
+
+      <Link
+        href="/contact"
+        className="text-gray-400 hover:text-[#0046FF] transition"
+      >
+        Contact
+      </Link>
+
+      <Link
+        href="/how-it-works"
+        className="text-gray-400 hover:text-[#0046FF] transition"
+      >
+        How It's Work
+      </Link>
+    </div>
+
+  </div>
+</div>
         {/* BOTTOM */}
         <div className="border-t border-[#1a2238] pt-6 flex flex-col md:flex-row items-center justify-between">
           <p className="text-sm text-gray-500 text-center md:text-left">

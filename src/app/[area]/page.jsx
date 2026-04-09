@@ -4,11 +4,15 @@ import SidebarEnquiryForm from "@/components/SidebarEnquiryForm";
 
 export default async function Page({ params }) {
   const resolvedParams = await params;
-  const area = resolvedParams?.area;
+   const rawArea = resolvedParams?.area;
 
-  const formattedArea = area
-    ?.replace(/-/g, " ")
-    .replace(/\b\w/g, (c) => c.toUpperCase());
+// ✅ CLEAN SLUG (IMPORTANT)
+const area = rawArea?.replace("2bhk-flat-for-sale-in-", "");
+
+// slug format → sector-9 → Sector 9
+const formattedArea = area
+  ?.replace(/-/g, " ")
+  .replace(/\b\w/g, (c) => c.toUpperCase());
 
   return (
     <div className="bg-[#EFF6FF] min-h-screen">

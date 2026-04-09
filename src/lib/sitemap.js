@@ -4,7 +4,7 @@ import { locations } from "@/data/locations";
 // 🔥 SLUG FUNCTION
 const createSlug = (location) => {
   return location
-    .replace(", Faridabad", "")
+    .replace(", Gurgaon", "")
     .toLowerCase()
     .replace(/,/g, "")
     .replace(/\s+/g, "-")
@@ -20,7 +20,7 @@ export async function generateSitemap() {
     <url><loc>${baseUrl}/about</loc></url>
     <url><loc>${baseUrl}/contact</loc></url>
     <url><loc>${baseUrl}/blog</loc></url>
-    <url><loc>${baseUrl}/2bhk-flat-for-sale</loc></url>
+    <url><loc>${baseUrl}/how-it-works</loc></url>
 
   `;
 
@@ -48,7 +48,7 @@ export async function generateSitemap() {
 
     return `
       <url>
-        <loc>${baseUrl}/${slug}</loc>
+        <loc>${baseUrl}/2bhk-flat-for-sale-in-${slug}</loc>
       </url>
     `;
   });
