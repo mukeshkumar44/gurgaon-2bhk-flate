@@ -48,7 +48,7 @@ export async function generateSitemap() {
 
     return `
       <url>
-        <loc>${baseUrl}/2bhk-flat-for-sale-in-${slug}</loc>
+        <loc>${baseUrl}/2bhk-flat-for-sale-in-${slug}-gurgaon</loc>
       </url>
     `;
   });

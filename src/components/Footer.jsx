@@ -50,10 +50,10 @@ export default function Footer() {
               <div key={index} className="relative group overflow-visible">
 
                 <Link
-                  href={`/2bhk-flat-for-sale-in-${createSlug(loc)}`}
+                  href={`/2bhk-flat-for-sale-in-${createSlug(loc)}-gurgaon`}
                   className="block truncate text-gray-400 hover:text-white transition duration-300"
                 >
-                  2BHK Flats For Sale in {loc}
+                  2BHK Flats For Sale in {loc}, Gurgaon
                 </Link>
 
                 <div className="
