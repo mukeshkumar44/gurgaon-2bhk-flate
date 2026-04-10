@@ -38,13 +38,8 @@ export default function FilterProperties({ area }) {
 
   const finalData = useMemo(() => {
 
-    if (safeProperties.length === 0) {
-      return safeData;
-    }
-
-    const filteredIds = new Set(
-      safeData.map((p) => p._id)
-    );
+    if (safeData.length > 0) {
+    const filteredIds = new Set(safeData.map((p) => p._id));
 
     const remaining = safeProperties.filter(
       (p) => !filteredIds.has(p._id)
@@ -56,8 +51,14 @@ export default function FilterProperties({ area }) {
       ...safeData,
       ...remaining.slice(0, needed > 0 ? needed : 0)
     ].slice(0, 150);
+  }
 
-  }, [safeData, safeProperties]);
+  // 🔥 Case 2: Location data nahi mila → RANDOM DATA
+  return safeProperties.slice(0, 150);
+
+}, [safeData, safeProperties]);
+
+  
 
   /* ================= LOADING ================= */
 
@@ -100,20 +101,17 @@ export default function FilterProperties({ area }) {
 
   /* ================= EMPTY ================= */
 
-  if (finalData.length === 0) {
-    return (
-      <section className="bg-[#EFF6FF] py-16 text-center">
-        <h2 className="text-xl font-semibold text-gray-800">
-          No Properties Available in {formattedArea}
-        </h2>
-      </section>
-    );
-  }
+ 
 
   /* ================= MAIN ================= */
 
   return (
     <section className="bg-[#EFF6FF] py-6 scroll-mt-24">
+      {safeData.length === 0 && (
+  <p className="text-center text-sm text-gray-500 mb-4">
+    No exact match found for {formattedArea}, showing other properties
+  </p>
+)}
       <div className="max-w-7xl mx-auto space-y-6">
 
         {finalData.map((property) => (
