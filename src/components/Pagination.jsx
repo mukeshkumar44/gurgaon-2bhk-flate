@@ -40,7 +40,7 @@ export default function Pagination({
         Prev
       </button>
 
-      {/* FIRST PAGE */}
+     
       {visiblePages[0] > 1 && (
         <>
           <button
@@ -56,8 +56,6 @@ export default function Pagination({
           )}
         </>
       )}
-
-      {/* VISIBLE PAGES */}
       {visiblePages.map((page) => (
         <button
           key={page}
