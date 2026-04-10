@@ -1,4 +1,4 @@
-// src/context/BlogContext.js
+
 "use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
@@ -30,8 +30,6 @@ export const BlogProvider = ({ children }) => {
    
 
     const data = res.data;
-
-    // ✅ FIXED
     setBlogs(data?.blogs || []);
     setTotal(data?.totalBlogs || 0);
     setPage(pageNum);
