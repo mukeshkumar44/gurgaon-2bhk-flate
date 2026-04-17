@@ -26,6 +26,7 @@ export default function BlogDetails({ post }) {
             border border-blue-100">
               <Image
                 src={single?.HeroImg?.url}
+                unoptimized
                 alt={single?.HeroAltText || "Blog Image"}
                 width={1200}
                 height={800}
@@ -64,8 +65,13 @@ export default function BlogDetails({ post }) {
                   [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:text-gray-900
                   [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-gray-900
                   [&_p]:text-gray-700
-                  [&_li]:text-gray-700"
-                  dangerouslySetInnerHTML={{ __html: section?.content }}
+                  [&_li]:text-gray-700
+                  [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mt-3
+  [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mt-3
+  [&_li]:mb-2
+"
+  dangerouslySetInnerHTML={{ __html: section?.content }}
+                 
                 />
               </div>
 
@@ -74,6 +80,7 @@ export default function BlogDetails({ post }) {
                 <div className="w-full my-6">
                   <Image
                     src={section.img.url}
+                    unoptimized
                     alt={section?.img?.altText || "Blog Image"}
                     width={900}
                     height={600}

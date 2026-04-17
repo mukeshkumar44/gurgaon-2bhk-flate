@@ -106,6 +106,7 @@ export default function BlogList() {
                       post?.image ||
                       "/fallback.jpg"
                     }
+                    unoptimized
                     alt={post?.HeroAltText || post?.alt || "blog image"}
                     width={600}
                     height={350}
