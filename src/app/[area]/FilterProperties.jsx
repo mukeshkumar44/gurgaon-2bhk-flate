@@ -127,6 +127,7 @@ export default function FilterProperties({ area }) {
 
                 <Image
                   src={property?.media?.url || "/no-image.png"}
+                  unoptimized
                   alt={property.title}
                   width={600}
                   height={400}

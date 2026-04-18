@@ -101,6 +101,7 @@ export default function Properties() {
                 <div className="relative md:w-[35%] overflow-hidden">
   <Image
     src={property?.media?.url || "/no-image.png"}
+    unoptimized
     alt={property.title}
     width={600}
     height={400}

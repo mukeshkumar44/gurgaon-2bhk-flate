@@ -25,6 +25,7 @@ export default function PropertyCard({ property }) {
         <div className="relative w-full h-44 overflow-hidden">
           <Image
             src={property?.media?.url || "/no-image.png"}
+            unoptimized
             alt={property.title}
             width={400}
             height={250}
