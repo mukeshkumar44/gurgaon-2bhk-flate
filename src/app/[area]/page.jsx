@@ -16,12 +16,12 @@ const formattedArea = area
 
   return (
     <div className="bg-[#EFF6FF] min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 py-10">
+      <div className="max-w-7xl mx-auto px-2 py-10">
 
         {/* 🔥 DYNAMIC HEADING */}
         <div className="mb-12">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-            Premium 2BHK Flat For Sale in{" "}
+            2BHK Flat For Sale in{" "}
             <span className="text-[#0046FF]">
               {formattedArea || "Faridabad"}
             </span>
