@@ -213,7 +213,18 @@ export default function Properties() {
                     </button>
 
                     <Link
-                      href={`/properties/${property.slug}`}
+                     href={`/properties/${property.slug}`}
+  onClick={() => {
+    localStorage.setItem("lastLocation", property.city);
+
+    // 🔥 ONLY set if coming from listing page
+    if (window.location.pathname.includes("2bhk") || window.location.pathname.includes("listing")) {
+      localStorage.setItem("lastListing", window.location.pathname);
+    } else {
+      // 🔥 clear if coming from home or anywhere else
+      localStorage.removeItem("lastListing");
+    }
+  }}
                       className="bg-[#0046FF] text-white px-6 py-2 rounded-lg hover:bg-black transition w-full md:w-auto text-center font-medium"
                     >
                       View Details
