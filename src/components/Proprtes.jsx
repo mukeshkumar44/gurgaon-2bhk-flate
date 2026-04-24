@@ -73,9 +73,9 @@ export default function Properties() {
 
       {/* ================= HEADING ================= */}
       <div className="max-w-7xl mx-auto  mb-14">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
           Premium Residential Properties in Gurgaon
-        </h1>
+        </h2>
 
         <p className="mt-4 text-gray-500 max-w-2xl ">
           Explore high-potential 2BHK and Residential spaces available for sale
@@ -129,9 +129,9 @@ export default function Properties() {
                 {/* CONTENT */}
                 <div className="p-6 flex-1 flex flex-col">
 
-                  <h2 className="text-xl font-bold text-gray-900">
+                  <h3 className="text-xl font-bold text-gray-900">
                     {property.title}
-                  </h2>
+                  </h3>
 
                   <p className="text-sm text-gray-500 mt-1 flex items-center gap-1">
   <svg

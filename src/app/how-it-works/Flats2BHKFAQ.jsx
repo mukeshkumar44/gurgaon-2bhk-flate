@@ -74,9 +74,9 @@ export default function Flats2BHKFAQ() {
               >
                 {/* Question */}
                 <div className="flex justify-between items-center">
-                  <span className="font-semibold text-black">
+                  <h3 className="font-semibold text-black">
                     {faq.q}
-                  </span>
+                  </h3>
 
                   <span
                     className={`text-black transition-transform duration-300 ${

@@ -30,7 +30,7 @@ export default function Footer() {
         <div className="mb-10">
           <h2 className="text-2xl font-bold text-white">
             2BHK Flats for Sale in{" "}
-            <span className="text-[#0046FF]">Faridabad</span>
+            <span className="text-[#0046FF]">Gurgaon</span>
           </h2>
 
           <p className="text-gray-400 mt-4 max-w-2xl leading-relaxed">
@@ -40,9 +40,9 @@ export default function Footer() {
 
         {/* LOCATIONS */}
         <div className="mb-10 overflow-visible">
-          <h3 className="text-lg font-semibold text-white mb-6">
-            Popular Locations
-          </h3>
+          <h2 className="text-lg font-semibold text-white mb-6">
+            Popular Locations in Gurgaon
+          </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-x-6 gap-y-4 text-sm overflow-visible">
 

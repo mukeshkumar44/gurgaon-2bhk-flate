@@ -18,22 +18,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
- title: "2BHK Flats in Gurgaon | Affordable 2 Bedroom Apartments for Sale",
+ title: "2BHK Flats for Sale  in Gurgaon | Affordable 2 Bedroom Flats for Sale",
 
 description:
-"Find verified 2BHK flats in Gurgaon including apartments, builder floors, and ready-to-move homes. Explore affordable 2 bedroom flats in prime locations with modern amenities and excellent connectivity at best prices.",
+"Find verified 2BHK flats for Sale in Gurgaon including apartments, builder floors, and ready-to-move homes. Explore affordable 2 bedroom flats in prime locations with modern amenities and excellent connectivity at best prices.",
 
 keywords: [
   "2bhk flat gurgaon",
-  "2 bhk flat for sale gurgaon",
+  "2 bhk flat for sale in gurgaon",
   "2bhk apartments gurgaon",
   "2 bedroom flat gurgaon",
   "2bhk builder floor gurgaon",
   "2bhk ready to move gurgaon",
   "buy 2bhk flat gurgaon",
   "affordable 2bhk gurgaon",
-  "2bhk property gurgaon",
-  "2bhk resale flat gurgaon"
+  "2bhk property in gurgaon",
+  "2bhk resale flat in gurgaon"
 ],
 
   alternates: {

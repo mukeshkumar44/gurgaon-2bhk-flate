@@ -67,9 +67,9 @@ const SidebarEnquiryForm = () => {
   return (
     <div className="sticky top-28 bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
 
-      <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+      <h2 className="text-2xl font-semibold text-gray-900 mb-2">
         Get Instant Call Back
-      </h3>
+      </h2>
 
       <p className="text-sm text-gray-600 mb-6 leading-relaxed">
         Share your requirement and our property consultant will contact you shortly with complete details.
