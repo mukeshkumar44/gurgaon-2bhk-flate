@@ -5,7 +5,7 @@ export async function generateMetadata() {
   return {
     title: "2BHK Flat for Sale in Gurgaon Blogs | Price Trends & Buying Guide",
     description:
-      "Explore blogs on 2BHK flats for sale in Gurgaon. Get expert insights on pricing, best locations, investment tips and home buying guides for Gurgaon properties.",
+      "Read expert blogs on 2BHK flats for sale in Gurgaon – price trends, buying guides, investment tips & top locations. Stay updated on Gurgaon real estate market, affordable 2BHK apartments, ready to move flats & new launch projects. Your property knowledge hub!",
     keywords: [
       "2BHK flat for sale in Gurgaon",
       "buy 2bhk Gurgaon",

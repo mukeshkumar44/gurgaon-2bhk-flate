@@ -116,9 +116,9 @@ export default function BlogDetails({ post }) {
 
                     <summary className="flex justify-between items-center cursor-pointer list-none">
 
-                      <span className="font-semibold text-gray-900 group-hover:text-blue-600 transition">
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition">
                         {faq.Q}
-                      </span>
+                      </h3>
 
                       <span className="ml-4 text-blue-500 transition-transform duration-300 group-open:rotate-180">
                         ▼
