@@ -6,6 +6,7 @@ export default function Pagination({
   currentPage,
   onPageChange,
 }) {
+  // console.log({ totalItems, itemsPerPage });
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   if (totalPages <= 1) return null;

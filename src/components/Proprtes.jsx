@@ -9,19 +9,12 @@ import SidebarEnquiryForm from "./SidebarEnquiryForm";
 import Pagination from "@/components/Pagination";
 
 export default function Properties() {
-  const { properties, loading, error } = useProperty();
+  const {  properties,loading,error,page,setPage,
+  totalItems,itemsPerPage, } = useProperty();
 
   const [open, setOpen] = useState(false);
   const [selectedProperty, setSelectedProperty] = useState("");
-
   /* ================= PAGINATION ================= */
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 150;
-
-  const indexOfLast = currentPage * itemsPerPage;
-  const indexOfFirst = indexOfLast - itemsPerPage;
-  const currentProperties = properties?.slice(indexOfFirst, indexOfLast);
-
   const formatArea = (area, unit) => {
     if (!area) return "N/A";
     const formattedNumber = Number(area).toLocaleString("en-IN");
@@ -90,7 +83,7 @@ export default function Properties() {
         {/* ================= LEFT LIST ================= */}
         <div className="lg:col-span-2 space-y-10">
 
-          {currentProperties.map((property) => (
+          {properties.map((property) => (
             <div
               key={property._id}
               className="bg-white rounded-2xl shadow-md hover:shadow-2xl transition duration-300 overflow-hidden border border-gray-100 md:h-[250px]"
@@ -239,11 +232,11 @@ export default function Properties() {
 
           {/* ================= PAGINATION ================= */}
           <Pagination
-            totalItems={properties.length}
-            itemsPerPage={itemsPerPage}
-            currentPage={currentPage}
+            totalItems={totalItems}
+  itemsPerPage={itemsPerPage}
+  currentPage={page}
             onPageChange={(page) => {
-              setCurrentPage(page);
+              setPage(page);
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           />
