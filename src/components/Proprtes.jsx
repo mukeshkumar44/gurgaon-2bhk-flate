@@ -9,8 +9,8 @@ import SidebarEnquiryForm from "./SidebarEnquiryForm";
 import Pagination from "@/components/Pagination";
 
 export default function Properties() {
-  const {  properties,loading,error,page,setPage,
-  totalItems,itemsPerPage, } = useProperty();
+  const { properties, loading, error, page, setPage,
+    totalItems, itemsPerPage, } = useProperty();
 
   const [open, setOpen] = useState(false);
   const [selectedProperty, setSelectedProperty] = useState("");
@@ -62,7 +62,7 @@ export default function Properties() {
 
   return (
     <section id="locations"
-    className="bg-blue-50 px-4 py-16">
+      className="bg-blue-50 px-4 py-16">
 
       {/* ================= HEADING ================= */}
       <div className="max-w-7xl mx-auto  mb-14">
@@ -92,20 +92,20 @@ export default function Properties() {
 
                 {/* IMAGE */}
                 <div className="relative md:w-[35%] overflow-hidden">
-  <Image
-    src={property?.media?.url || "/no-image.png"}
-    unoptimized
-    alt={property.title}
-    width={600}
-    height={400}
-    className="w-full h-60 md:h-full object-cover"
-  />
+                  <Image
+                    src={property?.media?.url || "/no-image.png"}
+                    unoptimized
+                    alt={property.title}
+                    width={600}
+                    height={400}
+                    className="w-full h-60 md:h-full object-cover"
+                  />
 
-  {/* Ribbon */}
-  <span onClick={() => {
-                        setSelectedProperty(property.title);
-                        setOpen(true);
-                      }} className="
+                  {/* Ribbon */}
+                  <span onClick={() => {
+                    setSelectedProperty(property.title);
+                    setOpen(true);
+                  }} className="
     absolute top-4 left-0
     bg-[#0046FF] text-white
     text-xs md:text-sm
@@ -115,9 +115,9 @@ export default function Properties() {
     rounded-r-full
     tracking-wide cursor-pointer
   ">
-    {property.propertyType}
-  </span>
-</div>
+                    {property.propertyType}
+                  </span>
+                </div>
 
                 {/* CONTENT */}
                 <div className="p-6 flex-1 flex flex-col">
@@ -127,28 +127,28 @@ export default function Properties() {
                   </h3>
 
                   <p className="text-sm text-gray-500 mt-1 flex items-center gap-1">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="w-4 h-4 text-gray-400"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth={2}
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243A8 8 0 1117.657 16.657z"
-    />
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-    />
-  </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-4 h-4 text-gray-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243A8 8 0 1117.657 16.657z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                    </svg>
 
-  {property.locality}
-</p>
+                    {property.locality}
+                  </p>
 
                   {/* DETAILS GRID */}
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-6 relative">
@@ -168,7 +168,7 @@ export default function Properties() {
                         {formatArea(property.area, property.areaUnit)}
                       </p> */}
                       <p className="text-sm text-gray-500">
-                        STATUS : <span  className="font-semibold text-blue-800 text-md">Available</span>
+                        STATUS : <span className="font-semibold text-blue-800 text-md">Available</span>
                       </p>
                       <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-12 w-px bg-gray-300"></div>
                     </div>
@@ -176,10 +176,10 @@ export default function Properties() {
                     {/* TYPE */}
                     <div>
                       <p className="text-sm text-gray-500">
-                        TYPE :  <span  className="font-semibold text-gray-800 text-md"> {property.propertyCategory}</span>
+                        TYPE :  <span className="font-semibold text-gray-800 text-md"> {property.propertyCategory}</span>
                       </p>
                       <p>
-                        
+
                       </p>
                     </div>
 
@@ -206,18 +206,18 @@ export default function Properties() {
                     </button>
 
                     <Link
-                     href={`/properties/${property.slug}`}
-  onClick={() => {
-    localStorage.setItem("lastLocation", property.city);
+                      href={`/properties/${property.slug}`}
+                      onClick={() => {
+                        localStorage.setItem("lastLocation", property.city);
 
-    // 🔥 ONLY set if coming from listing page
-    if (window.location.pathname.includes("2bhk") || window.location.pathname.includes("listing")) {
-      localStorage.setItem("lastListing", window.location.pathname);
-    } else {
-      // 🔥 clear if coming from home or anywhere else
-      localStorage.removeItem("lastListing");
-    }
-  }}
+                        // 🔥 ONLY set if coming from listing page
+                        if (window.location.pathname.includes("2bhk") || window.location.pathname.includes("listing")) {
+                          localStorage.setItem("lastListing", window.location.pathname);
+                        } else {
+                          // 🔥 clear if coming from home or anywhere else
+                          localStorage.removeItem("lastListing");
+                        }
+                      }}
                       className="bg-[#0046FF] text-white px-6 py-2 rounded-lg hover:bg-black transition w-full md:w-auto text-center font-medium"
                     >
                       View Details
@@ -233,8 +233,8 @@ export default function Properties() {
           {/* ================= PAGINATION ================= */}
           <Pagination
             totalItems={totalItems}
-  itemsPerPage={itemsPerPage}
-  currentPage={page}
+            itemsPerPage={itemsPerPage}
+            currentPage={page}
             onPageChange={(page) => {
               setPage(page);
               window.scrollTo({ top: 0, behavior: "smooth" });
