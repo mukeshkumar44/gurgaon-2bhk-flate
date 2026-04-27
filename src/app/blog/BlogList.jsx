@@ -155,9 +155,9 @@ export default function BlogList() {
       {!loading && !error && Array.isArray(blogs) && blogs.length === 0 && (
         <div className="flex flex-col items-center justify-center text-center py-20">
 
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
             Blogs Coming Soon 🚀
-          </h3>
+          </h2>
 
           <p className="text-gray-500 mt-3 max-w-md">
             We are working on some amazing real estate insights.
