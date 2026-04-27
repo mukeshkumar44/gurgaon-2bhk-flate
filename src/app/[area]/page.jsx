@@ -2,6 +2,37 @@ import FilterProperties from "./FilterProperties";
 
 import SidebarEnquiryForm from "@/components/SidebarEnquiryForm";
 import Breadcrumb from "@/components/Breadcrumb";
+export async function generateMetadata({ params }) {
+  const resolvedParams = await params;
+  const rawArea = resolvedParams?.area;
+
+  const area = rawArea?.replace("2bhk-flat-for-sale-in-", "");
+
+  const formattedArea = area
+    ?.replace(/-/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+
+  const locationName = formattedArea || "Faridabad";
+
+  return {
+    title: `2BHK Flats for Sale in ${locationName} | Buy 2BHK Apartments`,
+
+    description: `Explore 2BHK flats for sale in ${locationName}. Find affordable and luxury 2BHK apartments with modern amenities, prime locations, and excellent connectivity in ${locationName}.`,
+
+    keywords: [
+      `2BHK flats for sale in ${locationName}`,
+      `buy 2BHK ${locationName}`,
+      `2BHK apartments ${locationName}`,
+      `2BHK property ${locationName}`,
+      `${locationName} 2BHK flats`,
+      `residential 2BHK ${locationName}`,
+    ],
+
+    alternates: {
+      canonical: `https://www.2bhkflatsforsaleingurgaon.com/${rawArea}`,
+    },
+  };
+}
 
 export default async function Page({ params }) {
   const resolvedParams = await params;
