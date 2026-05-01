@@ -231,15 +231,15 @@ export default function Properties() {
           ))}
 
           {/* ================= PAGINATION ================= */}
-          <Pagination
-            totalItems={totalItems}
-            itemsPerPage={itemsPerPage}
-            currentPage={page}
-            onPageChange={(page) => {
-              setPage(page);
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-          />
+        {/* PAGINATION */}
+
+  <Pagination
+    totalItems={totalItems}
+    itemsPerPage={itemsPerPage}
+    currentPage={page}
+    onPageChange={setPage}
+  />
+
 
         </div>
 
