@@ -28,7 +28,7 @@ export async function generateSitemap() {
   let propertiesUrls = [];
   try {
     const res = await axios.get(
-      `https://deal-acres-backend.onrender.com/api/listed-properties/getPropertiesSlugs/www.2bhkflatsforsaleingurgaon.com`
+      `https://gurgaon-backend.onrender.com/api/listed-properties/getPropertiesSlugs/www.2bhkflatsforsaleingurgaon.com`
     );
 
     propertiesUrls = res.data.map(

@@ -14,7 +14,7 @@ export const metadata = {
 
 async function getPropertyBySlug(slug) {
   const res = await fetch(
-    `https://deal-acres-backend.onrender.com/api/listed-properties/getPropertyBySlug/${slug}`,
+    `https://gurgaon-backend.onrender.com/api/listed-properties/getPropertyBySlug/${slug}`,
     {
       cache: "no-store", // 👈 pure SSR
     }
@@ -25,7 +25,7 @@ async function getPropertyBySlug(slug) {
   }
 
   const json = await res.json();
-  return json?.data?.[0] || null;
+  return json?.data || null;
 }
 
 export default async function Page({ params }) {
