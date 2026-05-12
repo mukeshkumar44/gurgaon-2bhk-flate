@@ -36,7 +36,7 @@ export const PropertyProvider = ({ children }) => {
       // console.log("page =>",page)
 
       const res = await axios.get(
-        `https://deal-acres-backend.onrender.com/api/listed-properties/getPropertiesByDomain/${domain}?page=${page}&limit=${limit}`
+        `https://gurgaon-backend.onrender.com/api/listed-properties/getPropertiesByDomain/${domain}?page=${page}&limit=${limit}`
       );
 // console.log("API Response:", res.data);
       setProperties(res.data?.data || []);
@@ -70,7 +70,7 @@ export const PropertyProvider = ({ children }) => {
       setError2(null);
 
       const response = await axios.get(
-        `https://deal-acres-backend.onrender.com/api/listed-properties/getPropertiesByDomainAndLocality/${domain}/${decodeSlugWithHyphen(locality)}`
+        `https://gurgaon-backend.onrender.com/api/listed-properties/getPropertiesByDomainAndLocality/${domain}/${decodeSlugWithHyphen(locality)}`
       );
 
       setData(response?.data?.data || []);
