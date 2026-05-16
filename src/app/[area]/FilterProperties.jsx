@@ -126,7 +126,9 @@ export default function FilterProperties({ area }) {
               <div className="relative md:w-[35%] overflow-hidden">
 
                 <Image
-                  src={property?.media?.url || "/no-image.png"}
+                  src={property?.media?.url 
+                    ? property?.media?.url
+                      : "https://res.cloudinary.com/dbihlu2ve/image/upload/v1778830985/GurgaonProperties/ioopp3bvwvbtg7nqegiy.webp"}
                   unoptimized
                   alt={property.title}
                   width={600}

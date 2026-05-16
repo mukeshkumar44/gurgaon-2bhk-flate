@@ -22,9 +22,11 @@ export default function PropertyCard({ property }) {
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-300 overflow-hidden flex flex-col h-full">
 
         {/* IMAGE */}
-        <div className="relative w-full h-44 overflow-hidden">
+        <div className="relative w-full h-60 overflow-hidden">
           <Image
-            src={property?.media?.url || "/no-image.png"}
+            src={property?.media?.url 
+              ? property?.media?.url
+                      : "https://res.cloudinary.com/dbihlu2ve/image/upload/v1778830985/GurgaonProperties/ioopp3bvwvbtg7nqegiy.webp"}
             unoptimized
             alt={property.title}
             width={400}
