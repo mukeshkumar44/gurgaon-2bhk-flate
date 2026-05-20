@@ -77,26 +77,7 @@ const HeroSection = () => {
           </h1>
 
           <p className="text-lg max-w-2xl text-blue-100 leading-relaxed">
-            Buying a 2BHK flat for sale in Gurgaon is one of the smartest
-            decisions for homebuyers looking for comfort, modern lifestyle, and
-            strong investment potential. Gurgaon, one of the fastest-growing
-            cities in Delhi NCR, offers world-class infrastructure, metro
-            connectivity, corporate hubs, shopping malls, reputed schools,
-            hospitals, and premium residential communities.
-            <br />
-            A 2BHK flat for sale in Gurgaon is perfect for working
-            professionals, small families, and investors who want a balance of
-            affordability and luxury. These flats are available in prime
-            locations, gated societies, and newly developed residential
-            projects offering modern amenities such as lifts, security,
-            parking, landscaped parks, clubhouse, and power backup.
-            <br />
-            With high rental demand and continuous property appreciation,
-            owning a 2BHK flat for sale in Gurgaon ensures long-term value and
-            excellent returns on investment. As a trusted venture of Deal
-            Acres, we help you find verified, legally clear, and best-priced
-            2BHK flats for sale in Gurgaon, making your home-buying journey
-            smooth, transparent, and stress-free.
+            The 2BHK flat is Gurgaon's most beloved home — and for excellent reasons! A 2BHK flat for sale in Gurgaon is the perfect entry into home ownership for young couples, nuclear families, working professionals, and savvy investors seeking the ideal balance of space, functionality, and affordability. Whether you're drawn to the vibrant energy of a high-rise 2BHK apartment with panoramic city views on Sohna Road, a quiet and community-oriented 2BHK in a low-rise society in Palam Vihar, or a strategically located 2BHK flat near a metro station for effortless daily commuting, Gurgaon's market is bursting with outstanding options. 2BHK flats in Gurgaon are available across a price spectrum — from ₹35 lakh in affordable sectors to ₹3 crore in luxury projects on Golf Course Road — making them the most versatile and liquid asset in the entire Gurgaon real estate portfolio. With RERA protection, home loan incentives, and steady price appreciation across all segments, there has never been a better time to buy a 2BHK flat in Gurgaon. Browse our extensively verified, current listings of 2BHK flats for sale in Gurgaon and find the one that fits your life perfectly!
           </p>
           <Link href="/how-it-works">
   <button className="relative overflow-hidden bg-white text-[#0046FF] px-6 py-3 rounded-xl font-semibold shadow-md transition-all duration-300 hover:bg-white hover:shadow-xl hover:scale-105 mt-4 cursor-pointer">
