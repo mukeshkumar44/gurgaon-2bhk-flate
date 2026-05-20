@@ -1,93 +1,134 @@
-import FilterProperties from "./FilterProperties";
+// app/[area]/page.jsx
 
-import SidebarEnquiryForm from "@/components/SidebarEnquiryForm";
-import Breadcrumb from "@/components/Breadcrumb";
+import PageContent from "@/components/PageContent";
+import Listing from "./Listings";
+
+// import PageContent from "@/components/PageContent";
+
+const DOMAIN = "www.2bhkflatsforsaleingurgaon.com";
+const BASE_URL = "https://gurgaon-backend.onrender.com";
+
+// Fallback SEO
+const FALLBACK_META = {
+  title: "2BHK Flats for Sale in Gurgaon",
+  description:
+    "Explore premium 2BHK flats for sale in Gurgaon with modern amenities and best pricing.",
+};
+
+// Common API Function
+const getPageData = async (slug) => {
+  try {
+    const res = await fetch(
+      `${BASE_URL}/api/page-content/getPageContent?domain=${DOMAIN}&slug=${slug}`,
+      {
+        cache: "no-store",
+      }
+    );
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch page data");
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+// Dynamic Metadata
 export async function generateMetadata({ params }) {
-  const resolvedParams = await params;
-  const rawArea = resolvedParams?.area;
+  const { area } = await params;
 
-  const area = rawArea?.replace("2bhk-flat-for-sale-in-", "");
+  const result = await getPageData(area);
 
-  const formattedArea = area
-    ?.replace(/-/g, " ")
-    .replace(/\b\w/g, (c) => c.toUpperCase());
+  // Fallback Meta
+  if (!result?.success || !result?.data) {
+    return {
+      title: FALLBACK_META.title,
+      description: FALLBACK_META.description,
 
-  const locationName = formattedArea || "Faridabad";
+      alternates: {
+        canonical: `https://${DOMAIN}/${area}`,
+      },
+
+      openGraph: {
+        title: FALLBACK_META.title,
+        description: FALLBACK_META.description,
+        url: `https://${DOMAIN}/${area}`,
+        siteName: DOMAIN,
+        locale: "en_IN",
+        type: "website",
+      },
+
+      twitter: {
+        card: "summary_large_image",
+        title: FALLBACK_META.title,
+        description: FALLBACK_META.description,
+      },
+
+      robots: {
+        index: true,
+        follow: true,
+      },
+    };
+  }
+
+  const data = result.data;
+
+  const canonicalUrl = `https://${DOMAIN}/${data.slug}`;
 
   return {
-    title: `2BHK Flats for Sale in ${locationName} | Buy 2BHK Apartments`,
-
-    description: `Explore 2BHK flats for sale in ${locationName}. Find affordable and luxury 2BHK apartments with modern amenities, prime locations, and excellent connectivity in ${locationName}.`,
-
-    keywords: [
-      `2BHK flats for sale in ${locationName}`,
-      `buy 2BHK ${locationName}`,
-      `2BHK apartments ${locationName}`,
-      `2BHK property ${locationName}`,
-      `${locationName} 2BHK flats`,
-      `residential 2BHK ${locationName}`,
-    ],
+    title: data.metaTitle,
+    description: data.metaDescription,
 
     alternates: {
-      canonical: `https://www.2bhkflatsforsaleingurgaon.com/${rawArea}`,
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: data.metaTitle,
+      description: data.metaDescription,
+      url: canonicalUrl,
+      siteName: DOMAIN,
+      locale: "en_IN",
+      type: "website",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: data.metaTitle,
+      description: data.metaDescription,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }
 
+// Page Component
 export default async function Page({ params }) {
-  const resolvedParams = await params;
-   const rawArea = resolvedParams?.area;
-// ✅ CLEAN SLUG (IMPORTANT)
-const area = rawArea?.replace("2bhk-flat-for-sale-in-", "");
+  const { area } = await params;
 
-// slug format → sector-9 → Sector 9
-const formattedArea = area
-  ?.replace(/-/g, " ")
-  .replace(/\b\w/g, (c) => c.toUpperCase());
+  const result = await getPageData(area);
+
+  // // Fallback UI
+  // if (!result?.success || !result?.data) {
+  //   return (
+  //     <main>
+  //       <h1>{FALLBACK_META.title}</h1>
+
+  //       <p>{FALLBACK_META.description}</p>
+  //     </main>
+  //   );
+  // }
 
   return (
-    <div className="bg-[#EFF6FF] min-h-screen">
-      <div className="max-w-7xl mx-auto px-2 py-10">
-<div className="mb-6">
-   <Breadcrumb />
-  </div>
-        {/* 🔥 DYNAMIC HEADING */}
-        <div className="mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-            2BHK Flat For Sale in{" "}
-            <span className="text-[#0046FF]">
-              {formattedArea || "Faridabad"}
-            </span>
-          </h1>
-
-          <p className="text-gray-600 mt-4 text-base">
-            Explore luxury residential properties in prime and high-growth locations.
-          </p>
-
-          <div className="w-24 h-1 bg-[#0046FF] mt-6 rounded-full"></div>
-        </div>
-
-        {/* 🔥 MAIN GRID */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-
-          {/* LEFT SIDE */}
-          <div className="lg:col-span-8 space-y-8">
-            <FilterProperties area={area} />
-
-            {/* Optional: Show extra properties section */}
-            {/* <Proprtes /> */}
-          </div>
-
-          {/* RIGHT SIDE */}
-          <div className="lg:col-span-4">
-            <div className="sticky top-28">
-              <SidebarEnquiryForm />
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
+    <main>
+      <Listing slug={area}/>
+      <PageContent pageContent={[result?.data?.pageContent]} area={result?.data?.locality} />
+    </main>
   );
 }
