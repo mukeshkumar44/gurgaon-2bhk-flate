@@ -25,17 +25,21 @@ jobs:
         continue-on-error: true
         run: |
           git remote remove mirror || true
-
           git remote add mirror https://x-access-token:${{ secrets.GURGAON_ACCESS_TOKEN }}@github.com/dealacresGurgaon/2-BHK-Flat-For-Sale.git
-
           git push mirror HEAD:main --force
 
-      # New Repo
+      # Gurgaon Projects Repo
       - name: Sync to Gurgaon Projects Repo
         continue-on-error: true
         run: |
           git remote remove projects || true
-
           git remote add projects https://x-access-token:${{ secrets.GURGAON_PROJECTS_ACCESS_TOKEN }}@github.com/mukeshkumar44/gurgaon-2bhk-flate.git
-
           git push projects HEAD:main --force
+
+      # Nagori Gate Repo
+      - name: Sync to Nagori Gate 2 BHK Flat For Sale
+        continue-on-error: true
+        run: |
+          git remote remove nagori || true
+          git remote add nagori https://x-access-token:${{ secrets.NAGORI_GATE_PROJECTS_ACCESS_TOKEN }}@github.com/dealacresnagorigate/2-bhk-flat-for-sale.git
+          git push nagori HEAD:main --force
