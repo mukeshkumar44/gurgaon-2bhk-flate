@@ -7,6 +7,7 @@ import Link from "next/link";
 import ContactPopup from "@/components/ContactPopup";
 import SidebarEnquiryForm from "./SidebarEnquiryForm";
 import Pagination from "@/components/Pagination";
+import ViewDetailsButton from "./ViewDetailsButton";
 
 export default function Properties() {
   const { properties, loading, error, page, setPage,
@@ -207,7 +208,7 @@ export default function Properties() {
                       Price on Call
                     </button>
 
-                    <Link
+                    {/* <Link
                       href={`/properties/${property.slug}`}
                       onClick={() => {
                         localStorage.setItem("lastLocation", property.city);
@@ -223,8 +224,11 @@ export default function Properties() {
                       className="bg-[#0046FF] text-white px-6 py-2 rounded-lg hover:bg-black transition w-full md:w-auto text-center font-medium"
                     >
                       View Details
-                    </Link>
-
+                    </Link> */}
+                      <ViewDetailsButton
+                          slug={property.slug}
+                         href={`https://www.dealacres.com/property/${property.slug}`}
+                         />
                   </div>
 
                 </div>

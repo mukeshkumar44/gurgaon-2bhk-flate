@@ -5,6 +5,7 @@ import { useProperty } from "@/contextapi/propertycontext";
 import Image from "next/image";
 import Link from "next/link";
 import ContactPopup from "@/components/ContactPopup";
+import ViewDetailsButton from "@/components/ViewDetailsButton";
 
 export default function FilterProperties({ area }) {
 
@@ -237,12 +238,17 @@ export default function FilterProperties({ area }) {
                     Price on Call
                   </button>
 
-                  <Link
+                  {/* <Link
                     href={`/properties/${property.slug}`}
                     className="bg-[#0046FF] text-white px-6 py-2 rounded-lg hover:bg-[#0033CC] transition text-sm"
                   >
                     View Details
-                  </Link>
+                  </Link> */}
+                  <ViewDetailsButton
+                    slug={property.slug}
+                  href={`https://www.dealacres.com/property/${property.slug}`}
+                    />
+                  
 
                 </div>
 
