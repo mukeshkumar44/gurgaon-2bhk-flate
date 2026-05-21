@@ -1,8 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import toast from "react-hot-toast";
 
-export default function ContactPopup({ isOpen, onClose, propertyTitle }) {
+export default function ContactPopup({
+  isOpen,
+  onClose,
+  propertyTitle,
+}) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -10,59 +15,105 @@ export default function ContactPopup({ isOpen, onClose, propertyTitle }) {
   });
 
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
+  // CLOSE POPUP
   if (!isOpen) return null;
 
+  // INPUT CHANGE
   const handleChange = (e) => {
     const { name, value } = e.target;
 
+    // PHONE VALIDATION
     if (name === "phone") {
+      // only numbers
       if (!/^\d*$/.test(value)) return;
+
+      // max 10 digits
       if (value.length > 10) return;
     }
 
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
+  // SUBMIT FORM
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
 
+    // PHONE CHECK
     if (formData.phone.length !== 10) {
-      setError("Phone number must be exactly 10 digits.");
+      toast.error(
+        "Phone number must be exactly 10 digits"
+      );
       return;
     }
+
+    // WEBSITE NAME
+    const website =
+      typeof window !== "undefined"
+        ? window.location.hostname.replace(
+            "www.",
+            ""
+          )
+        : "";
 
     try {
       setLoading(true);
 
-      const res = await fetch("/api/contact", {
+      const payload = {
+        ...formData,
+        propertyTitle,
+        website,
+        source: "Popup Enquiry",
+      };
+
+      console.log("PAYLOAD:", payload);
+
+      // IMPORTANT
+      // /api/submit use karo
+      const res = await fetch("/api/submit", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type":
+            "application/json",
         },
-        body: JSON.stringify({
-          ...formData,
-          propertyTitle,
-          source: "Popup Enquiry",
-        }),
+        body: JSON.stringify(payload),
       });
 
-      if (!res.ok) throw new Error("Failed");
+      console.log("STATUS:", res.status);
 
       const data = await res.json();
 
+      console.log("RESPONSE:", data);
+
       if (data.success) {
-        setFormData({ name: "", phone: "", message: "" });
-        alert("Enquiry Submitted Successfully!");
+        toast.success(
+          "Enquiry Submitted Successfully!"
+        );
+
+        // RESET FORM
+        setFormData({
+          name: "",
+          phone: "",
+          message: "",
+        });
+
+        // CLOSE POPUP
         onClose();
       } else {
-        setError("Something went wrong. Please try again.");
+        toast.error(
+          data.message ||
+            "Something went wrong"
+        );
       }
-
     } catch (err) {
-      setError("Server error. Please try again later.");
+      console.log("ERROR:", err);
+
+      toast.error(
+        "Server error. Please try again later."
+      );
     } finally {
       setLoading(false);
     }
@@ -130,9 +181,7 @@ export default function ContactPopup({ isOpen, onClose, propertyTitle }) {
             outline-none resize-none transition"
           />
 
-          {error && (
-            <p className="text-sm text-red-600">{error}</p>
-          )}
+        
 
          <button
   type="submit"
