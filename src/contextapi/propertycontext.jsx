@@ -9,6 +9,7 @@ const DEFAULT_DOMAIN = "www.2bhkflatsforsaleingurgaon.com";
 
 export const PropertyProvider = ({ children }) => {
 
+
   const [dailyLimit,setDailyLimit]=useState(50);
 
   // ✅ FIXED DOMAIN

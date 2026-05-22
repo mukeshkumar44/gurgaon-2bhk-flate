@@ -114,7 +114,7 @@ export async function generateSitemap() {
   const allUrls = [
     staticUrls,
     ...locationUrls,
-    // ...propertiesUrls,
+     // ...propertiesUrls,
      ...blogUrls,
   ].join("\n");
 
