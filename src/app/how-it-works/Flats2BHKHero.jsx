@@ -1,9 +1,12 @@
 import Link from "next/link";
+import Breadcrumb from "@/components/Breadcrumb"
 export default function Flats2BHKHero() {
   return (
     <section className="bg-blue-50 py-6 px-4 md:px-10">
       <div className="max-w-5xl mx-auto space-y-6">
-
+        <div className="py-5">
+            <Breadcrumb/>
+           </div>
         {/* Main Heading */}
         <h1 className="text-2xl md:text-4xl font-bold  leading-tight bg-gradient-to-r from-[#0046FF] to-[#5A8DFF] bg-clip-text text-transparent">
           2BHK Flats for Sale in Gurgaon – Complete Guide for Buyers & Sellers

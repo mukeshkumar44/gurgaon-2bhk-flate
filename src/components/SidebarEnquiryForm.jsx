@@ -3,8 +3,6 @@
 import React, { useState } from "react";
 import AlertPopup from "./AlertPopup";
 
-// IMPORT ALERT POPUP
-import AlertPopup from "./AlertPopup";
 
 const SidebarEnquiryForm = () => {
    const [formData, setFormData] = useState({
@@ -20,12 +18,7 @@ const SidebarEnquiryForm = () => {
 
   const [loading, setLoading] = useState(false);
 
-  // ALERT POPUP STATE
-  const [popup, setPopup] = useState({
-    open: false,
-    type: "success",
-    message: "",
-  });
+ 
 
   // INPUT CHANGE
   const handleChange = (e) => {

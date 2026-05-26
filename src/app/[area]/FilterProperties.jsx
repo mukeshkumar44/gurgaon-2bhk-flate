@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ContactPopup from "@/components/ContactPopup";
 import ViewDetailsButton from "@/components/ViewDetailsButton";
+import NearbyLocations from "@/components/NearbyLocations";
 
 export default function FilterProperties({ area }) {
 
@@ -115,148 +116,183 @@ export default function FilterProperties({ area }) {
 )}
       <div className="max-w-7xl mx-auto space-y-6">
 
-        {finalData.map((property) => (
-          <div
-            key={property._id}
-            className="bg-white rounded-2xl shadow-md hover:shadow-xl transition border border-gray-200 overflow-hidden md:h-[250px]"
+      {/* ================= PROPERTY LOOP ================= */}
+
+{finalData.map((property, index) => (
+  <div key={property._id}>
+
+    {/* ================= PROPERTY CARD ================= */}
+
+    <div
+      className="
+        bg-white
+        rounded-2xl
+        shadow-md
+        hover:shadow-xl
+        transition
+        border border-gray-200
+        overflow-hidden
+        md:h-[250px]
+      "
+    >
+
+      <div className="flex flex-col md:flex-row h-full">
+
+        {/* PROPERTY IMAGE */}
+
+        <div className="relative md:w-[35%] overflow-hidden">
+
+          <Image
+            src={
+              property?.media?.url
+                ? property?.media?.url
+                : "https://res.cloudinary.com/dbihlu2ve/image/upload/v1778830985/GurgaonProperties/ioopp3bvwvbtg7nqegiy.webp"
+            }
+            unoptimized
+            alt={property.title}
+            width={600}
+            height={400}
+            className="w-full h-60 md:h-full object-cover"
+          />
+
+          {/* RIBBON */}
+
+          <span
+            onClick={() => {
+              setSelectedProperty(property.title);
+              setOpen(true);
+            }}
+            className="
+              absolute top-4 left-0
+              bg-[#0046FF]
+              text-white
+              text-xs md:text-sm
+              px-4 py-1.5
+              font-semibold
+              shadow-lg
+              rounded-r-full
+              tracking-wide
+              cursor-pointer
+            "
           >
+            {property.propertyType}
+          </span>
 
-            <div className="flex flex-col md:flex-row h-full">
+        </div>
 
-              {/* PROPERTY IMAGE */}
-              <div className="relative md:w-[35%] overflow-hidden">
+        {/* PROPERTY DETAILS */}
 
-                <Image
-                  src={property?.media?.url 
-                    ? property?.media?.url
-                      : "https://res.cloudinary.com/dbihlu2ve/image/upload/v1778830985/GurgaonProperties/ioopp3bvwvbtg7nqegiy.webp"}
-                  unoptimized
-                  alt={property.title}
-                  width={600}
-                  height={400}
-                  className="w-full h-60 md:h-full object-cover"
-                />
+        <div className="p-4 flex-1 flex flex-col">
 
-                {/* Property Type Ribbon */}
+          <h2 className="text-xl font-semibold text-gray-900">
+            {property.title}
+          </h2>
 
-                <span  onClick={() => {
-                      setSelectedProperty(property.title);
-                      setOpen(true);
-                    }} className="
-                  absolute top-4 left-0
-                  bg-[#0046FF] text-white
-                  text-xs md:text-sm
-                  px-4 py-1.5
-                  font-semibold
-                  shadow-lg
-                  rounded-r-full
-                  tracking-wide
-                  cursor-pointer
-                ">
-                  {property.propertyType}
+          <p className="text-sm text-gray-500 mt-1 flex items-center gap-1">
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-4 h-4 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243A8 8 0 1117.657 16.657z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+            </svg>
+
+            {property.locality}
+
+          </p>
+
+          {/* STATUS + TYPE */}
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-6 relative">
+
+            <div className="relative">
+
+              <p className="text-sm text-gray-500">
+                STATUS :
+                <span className="font-semibold text-blue-800 text-md">
+                  Available
                 </span>
+              </p>
 
-              </div>
-
-              {/* PROPERTY DETAILS */}
-
-              <div className="p-4 flex-1 flex flex-col">
-
-                <h2 className="text-xl font-semibold text-gray-900">
-                  {property.title}
-                </h2>
-
-                <p className="text-sm text-gray-500 mt-1 flex items-center gap-1">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="w-4 h-4 text-gray-400"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth={2}
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243A8 8 0 1117.657 16.657z"
-    />
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-    />
-  </svg>
-
-  {property.locality}
-</p>
-
-                {/* STATUS + TYPE */}
-
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-6 relative">
-
-                   
-                    <div className="relative">
-                      
-                      <p className="text-sm text-gray-500">
-                        STATUS : <span  className="font-semibold text-blue-800 text-md">Available</span>
-                      </p>
-                      <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-12 w-px bg-gray-300"></div>
-                    </div>
-
-                    {/* TYPE */}
-                    <div>
-                      <p className="text-sm text-gray-500">
-                        TYPE :  <span  className="font-semibold text-gray-800 text-md"> {property.propertyCategory}</span>
-                      </p>
-                      <p>
-                        
-                      </p>
-                    </div>
-
-                  </div>
-
-                {/* DESCRIPTION */}
-
-                {/* <p className="text-sm text-gray-500 mt-4 line-clamp-2">
-                  {property.description ||
-                    "Premium residential/commercial space offering strong rental potential and long-term appreciation."}
-                </p> */}
-
-                <div className="flex-1" />
-
-                {/* ACTION BUTTONS */}
-
-                <div className="flex flex-col md:flex-row justify-between items-center border-t mt-6 pt-4 gap-4">
-
-                  <button
-                    onClick={() => {
-                      setSelectedProperty(property.title);
-                      setOpen(true);
-                    }}
-                    className="border border-[#0046FF] text-[#0046FF] px-5 py-2 rounded-lg hover:bg-blue-50 transition text-sm font-medium"
-                  >
-                    Price on Call
-                  </button>
-
-                  {/* <Link
-                    href={`/properties/${property.slug}`}
-                    className="bg-[#0046FF] text-white px-6 py-2 rounded-lg hover:bg-[#0033CC] transition text-sm"
-                  >
-                    View Details
-                  </Link> */}
-                  <ViewDetailsButton
-                    slug={property.slug}
-                  href={`https://www.dealacres.com/property/${property.slug}`}
-                    />
-                  
-
-                </div>
-
-              </div>
+              <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-12 w-px bg-gray-300"></div>
 
             </div>
+
+            <div>
+
+              <p className="text-sm text-gray-500">
+                TYPE :
+                <span className="font-semibold text-gray-800 text-md">
+                  {" "}
+                  {property.propertyCategory}
+                </span>
+              </p>
+
+            </div>
+
           </div>
-        ))}
+
+          <div className="flex-1" />
+
+          {/* ACTION BUTTONS */}
+
+          <div className="flex flex-col md:flex-row justify-between items-center border-t mt-6 pt-4 gap-4">
+
+            <button
+              onClick={() => {
+                setSelectedProperty(property.title);
+                setOpen(true);
+              }}
+              className="
+                border border-[#0046FF]
+                text-[#0046FF]
+                px-5 py-2
+                rounded-lg
+                hover:bg-blue-50
+                transition
+                text-sm
+                font-medium
+              "
+            >
+              Price on Call
+            </button>
+
+            <ViewDetailsButton
+              slug={property.slug}
+              href={`https://www.dealacres.com/property/${property.slug}`}
+            />
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    {/* ================= AFTER EVERY 10 CARDS ================= */}
+
+    {(index + 1) % 30 === 0 && (
+      <NearbyLocations
+        properties={finalData.slice(index - 9, index + 1)}
+      />
+    )}
+
+  </div>
+))}
 
       </div>
 

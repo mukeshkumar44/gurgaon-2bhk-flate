@@ -11,6 +11,9 @@ export const metadata = {
     "buy 2BHK Gurgaon",
     "property in Gurgaon",
   ],
+    alternates: {
+    canonical: "https://www.2bhkflatsforsaleingurgaon.com/how-it-works",
+  },
 };
 
 export default function Page() {

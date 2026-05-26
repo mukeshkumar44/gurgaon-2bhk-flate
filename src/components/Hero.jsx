@@ -19,11 +19,7 @@ const HeroSection = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const [popup, setPopup] = useState({
-    open: false,
-    type: "success",
-    message: "",
-  });
+ 
 
   const website =
     typeof window !== "undefined"

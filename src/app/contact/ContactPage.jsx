@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import AlertPopup from "@/components/AlertPopup"
+import Breadcrumb from "@/components/Breadcrumb"
 
 
 export default function Page() {
@@ -105,12 +106,15 @@ export default function Page() {
 
   return (
     <>
-      <section className="bg-gradient-to-b from-white to-blue-50 py-20 px-4 sm:px-6">
+      <section className="bg-gradient-to-b from-white to-blue-50 py-6 px-4 sm:px-6">
 
         <div className="max-w-7xl mx-auto">
-
           {/* ================= HEADING ================= */}
-          <div className="text-center mb-16">
+           <div className="py-5">
+            <Breadcrumb/>
+           </div>
+    
+          <div className=" mb-16">
             <h1 className="text-2xl md:text-4xl font-bold text-gray-900">
               Let’s Discuss Your{" "}
               <span className="text-[#0046FF]">
@@ -118,14 +122,14 @@ export default function Page() {
               </span>
             </h1>
 
-            <p className="mt-6 text-gray-600 max-w-2xl mx-auto">
+            <p className="mt-6 text-gray-600 max-w-2xl ">
               Looking for a 2BHK flat for sale in Gurgaon? Whether you are
               buying your first home, upgrading your lifestyle, or investing
               in Gurgaon real estate, our property experts are here to guide
               you with verified listings and trusted advice.
             </p>
 
-            <div className="w-20 h-1 bg-[#0046FF] mx-auto mt-6 rounded-full"></div>
+            <div className="w-20 h-1 bg-[#0046FF]  mt-6 rounded-full"></div>
           </div>
 
           {/* ================= FORM + IMAGE ================= */}
