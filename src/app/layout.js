@@ -109,7 +109,7 @@ export default function RootLayout({ children }) {
             {children}
             <ScrollToTop />
             <Footer />
-            <Toaster position="top-right" reverseOrder={false} />
+            {/* <Toaster position="top-right" reverseOrder={false} /> */}
           </BlogProvider>
         </PropertyProvider>
       </body>
