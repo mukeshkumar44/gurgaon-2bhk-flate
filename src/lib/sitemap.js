@@ -28,8 +28,7 @@ export async function generateSitemap() {
     <lastmod>${currentDate}</lastmod>
     </url>
     <url>
-    <loc>
-    ${baseUrl}/contact</loc>
+    <loc>${baseUrl}/contact</loc>
     <lastmod>${currentDate}</lastmod>
     </url>
     <url>
