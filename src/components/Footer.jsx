@@ -50,8 +50,10 @@ export default function Footer() {
               <div key={index} className="relative group overflow-visible">
 
                 <Link
-                  href={`/2bhk-flat-for-sale-in-${createSlug(loc)}-gurgaon`}
-                  className="block truncate text-gray-400 hover:text-white transition duration-300"
+key={index}
+  href={`https://www.dealacres.com/properties/2-bhk-flat-for-sale-in-${createSlug(loc)}-gurgaon`}
+  target="_blank"
+  rel="noopener noreferrer"                   className="block truncate text-gray-400 hover:text-white transition duration-300"
                 >
                   2BHK Flats For Sale in {loc}, Gurgaon
                 </Link>
