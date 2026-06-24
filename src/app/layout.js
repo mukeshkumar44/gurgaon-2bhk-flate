@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
 import { BlogProvider } from "@/contextapi/BlogContext";
+import { LocalityProvider } from "@/contextapi/LocalityContext";
 import Script from "next/script";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -105,11 +106,13 @@ export default function RootLayout({ children }) {
         {/* ✅ Providers */}
         <PropertyProvider>
           <BlogProvider>
+            <LocalityProvider>
             <Navbar />
             {children}
             <ScrollToTop />
             <Footer />
             {/* <Toaster position="top-right" reverseOrder={false} /> */}
+            </LocalityProvider>
           </BlogProvider>
         </PropertyProvider>
       </body>

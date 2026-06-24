@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 import { locations } from "../data/locations";
-
+import { useLocality } from "@/contextapi/LocalityContext";
 const createSlug = (location) => {
   return location
     .replace(", Gurgaon", "")
@@ -15,12 +15,19 @@ const createSlug = (location) => {
 };
 
 export default function Footer() {
+  const { localities } = useLocality();
   const [showAll, setShowAll] = useState(false);
 
-  const initialCount = 50; // initially show limited
-  const visibleLocations = showAll
-    ? locations
-    : locations.slice(0, initialCount);
+  const displayLocations =
+  localities && localities.length > 0
+    ? localities
+    : locations;
+
+const initialCount = 19;
+
+const visibleLocations = showAll
+  ? displayLocations
+  : displayLocations.slice(0, initialCount);
 
   return (
     <footer className="bg-[#0b1120] pt-16 pb-8 px-4 border-t border-[#1a2238] overflow-visible">
@@ -44,7 +51,7 @@ export default function Footer() {
             Popular Locations in Gurgaon
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-x-6 gap-y-4 text-sm overflow-visible">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-4 text-sm overflow-visible">
 
             {visibleLocations.map((loc, index) => (
               <div key={index} className="relative group overflow-visible">
@@ -72,7 +79,7 @@ key={index}
               </div>
             ))}
 
-            {!showAll && locations.length > initialCount && (
+            {!showAll && displayLocations.length > initialCount && (
               <div>
                 <span
                   onClick={() => setShowAll(true)}
