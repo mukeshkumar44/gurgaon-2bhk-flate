@@ -1,24 +1,54 @@
+
 "use client";
 
+import { useEffect, useState } from "react";
 import { MapPin, Navigation } from "lucide-react";
 
-export default function NearbyLocations({
-  properties = [],
-}) {
+export default function NearbyLocations({ blockIndex = 0 }) {
+  const [locations, setLocations] = useState([]);
 
-  // 🔥 UNIQUE LOCALITIES
-  const uniqueLocations = [
-    ...new Set(
-      properties
-        ?.map((item) => item.locality)
-        ?.filter(Boolean)
-    ),
+  
+   
+  useEffect(() => {
+  const fetchAreas = async () => {
+    try {
+      const res = await fetch(
+        "https://gurgaon-backend.onrender.com/api/areas/getAllAreas"
+      );
+
+      const data = await res.json();
+
+      console.log("FULL RESPONSE =>", data);
+
+      setLocations(data.data || []);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  fetchAreas();
+}, []);
+const startIndex =
+  locations.length > 0
+    ? (blockIndex * 10) % locations.length
+    : 0;
+
+let visibleLocations = locations.slice(
+  startIndex,
+  startIndex + 10
+);
+
+if (
+  locations.length > 0 &&
+  visibleLocations.length < 10
+) {
+  visibleLocations = [
+    ...visibleLocations,
+    ...locations.slice(0, 10 - visibleLocations.length),
   ];
+}
 
-  // 🔥 ONLY 10 LOCATIONS
-  const visibleLocations = uniqueLocations.slice(0, 10);
-
-  if (visibleLocations.length === 0) return null;
+  if (!locations.length) return null;
 
   return (
     <section className="w-full py-2">
@@ -115,20 +145,17 @@ export default function NearbyLocations({
             {/* LOCATION LIST */}
             <div className="flex flex-wrap gap-3">
 
-              {visibleLocations.map((location, index) => (
+             {visibleLocations.slice(0, 10).map((item) => (
 
                 <button
-  key={index}
-  onClick={() =>
-    window.open(
-      `https://www.dealacres.com/properties/2-bhk-flats-for-sale-in-${location
-      .toLowerCase()
-      .replace(/,/g, "") // 🔥 comma remove
-      .replace(/\s+/g, "-")}`, // 🔥 space to -
-    "_blank"
-      )
-  }
-  className="
+                  key={item._id}
+                  onClick={() =>
+                    window.open(
+                      `https://www.dealacres.com/properties/2-bhk-flats-for-sale-in-${item.slug}`,
+                      "_blank"
+                    )
+                  }
+                  className="
     group
     flex items-center gap-1
     px-4 py-1
@@ -140,11 +167,11 @@ export default function NearbyLocations({
     transition-all duration-300
     cursor-pointer
   "
->
+                >
 
-  {/* ICON */}
-  <div
-    className="
+                  {/* ICON */}
+                  <div
+                    className="
       w-5 h-5
       rounded-xl
       bg-white
@@ -152,20 +179,20 @@ export default function NearbyLocations({
       group-hover:bg-white/20
       transition-all duration-300
     "
-  >
-    <MapPin
-      className="
+                  >
+                    <MapPin
+                      className="
         w-4 h-4
         text-[#0046FF]
         group-hover:text-white
         transition-all duration-300
       "
-    />
-  </div>
+                    />
+                  </div>
 
-  {/* TEXT */}
-  <span
-    className="
+                  {/* TEXT */}
+                  <span
+                    className="
       text-sm
       font-semibold
       text-[#0046FF]
@@ -173,11 +200,11 @@ export default function NearbyLocations({
       group-hover:text-white
       transition-all duration-300
     "
-  >
-    {location}
-  </span>
+                  >
+                    {item.location}
+                  </span>
 
-</button>
+                </button>
 
               ))}
 
