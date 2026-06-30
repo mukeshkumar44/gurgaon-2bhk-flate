@@ -9,23 +9,13 @@ import SidebarEnquiryForm from "./SidebarEnquiryForm";
 import Pagination from "@/components/Pagination";
 import ViewDetailsButton from "./ViewDetailsButton";
 import NearbyLocations from "./NearbyLocations";
-
+import { useClickLimit } from "@/hooks/useClickLimit"; 
 export default function Properties() {
-  const { properties, loading, error, page, setPage,
-    totalItems, itemsPerPage, } = useProperty();
+  const { properties, loading, error, page, setPage, totalItems, itemsPerPage } = useProperty();
 
   const [open, setOpen] = useState(false);
   const [selectedProperty, setSelectedProperty] = useState("");
-  /* ================= PAGINATION ================= */
-  const formatArea = (area, unit) => {
-    if (!area) return "N/A";
-    const formattedNumber = Number(area).toLocaleString("en-IN");
-    if (!unit) return formattedNumber;
-    const formattedUnit =
-      unit.charAt(0).toUpperCase() + unit.slice(1).toLowerCase();
-    return `${formattedNumber} ${formattedUnit}`;
-  };
-
+const { handlePropertyClick } = useClickLimit();
   /* ================= LOADING ================= */
   if (loading) {
     return (
@@ -42,234 +32,133 @@ export default function Properties() {
   }
 
   if (error) {
-    return (
-      <p className="text-center py-20 text-red-500">
-        Something went wrong while loading properties.
-      </p>
-    );
+    return <p className="text-center py-20 text-red-500">Something went wrong while loading properties.</p>;
   }
 
   if (!properties || properties.length === 0) {
     return (
       <div className="text-center py-20">
-        <h2 className="text-2xl font-semibold text-gray-800">
-          No Properties Available in Gurgaon
-        </h2>
-        <p className="text-gray-500 mt-2">
-          New listings will be updated soon.
-        </p>
+        <h2 className="text-2xl font-semibold text-gray-800">No Properties Available in Gurgaon</h2>
+        <p className="text-gray-500 mt-2">New listings will be updated soon.</p>
       </div>
     );
   }
 
   return (
-    <section id="locations"
-      className="bg-blue-50 px-4 py-16">
-
-      {/* ================= HEADING ================= */}
-      <div className="max-w-7xl mx-auto  mb-14">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-          Premium Residential Properties in Gurgaon
-        </h2>
-
-        <p className="mt-4 text-gray-500 max-w-2xl ">
-          Explore high-potential 2BHK and Residential spaces available for sale
-          and investment across prime locations in Gurgaon.
-        </p>
-
-        <div className="w-24 h-1 bg-[#0046FF]  mt-6 rounded-full"></div>
+    <section id="locations" className="bg-blue-50 px-4 py-16">
+      <div className="max-w-7xl mx-auto mb-14">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Premium Residential Properties in Gurgaon</h2>
+        <p className="mt-4 text-gray-500 max-w-2xl ">Explore high-potential 2BHK and Residential spaces available for sale and investment across prime locations in Gurgaon.</p>
+        <div className="w-24 h-1 bg-[#0046FF] mt-6 rounded-full"></div>
       </div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div className="lg:col-span-2 space-y-10">
+          {properties.map((property, index) => {
+            // SLUG GENERATION LOGIC
+            const typeSlug = property.propertyType
+              ? property.propertyType.toLowerCase().trim().replace(/[\s\W-]+/g, '-')
+              : "property";
 
-        {/* ================= LEFT LIST ================= */}
-        {/* ================= LEFT LIST ================= */}
-<div className="lg:col-span-2 space-y-10">
+            return (
+              <div key={property._id}>
+                <div className="bg-white rounded-2xl shadow-md hover:shadow-2xl transition duration-300 overflow-hidden border border-gray-100 md:h-[280px]">
+                  <div className="flex flex-col md:flex-row h-full">
+                    {/* IMAGE */}
+                    <div className="relative md:w-[35%] overflow-hidden">
+                      <Image
+                        src={property?.media?.url || "https://res.cloudinary.com/dbihlu2ve/image/upload/v1778830985/GurgaonProperties/ioopp3bvwvbtg7nqegiy.webp"}
+                        unoptimized
+                        alt={property.title}
+                        width={600}
+                        height={400}
+                        className="w-full h-60 md:h-full object-cover"
+                      />
+                      <span
+                        onClick={() => { setSelectedProperty(property.title); setOpen(true); }}
+                        className="absolute top-4 left-0 bg-[#0046FF] text-white text-xs md:text-sm px-3 py-1 font-semibold shadow-lg rounded-r-full cursor-pointer"
+                      >
+                        {property.propertyType}
+                      </span>
+                    </div>
 
-  {properties.map((property, index) => (
-    <div key={property._id}>
+                    {/* CONTENT */}
+                    <div className="p-6 flex-1 flex flex-col">
+                      <h3 className="text-xl font-bold text-gray-900">{property.title}</h3>
+                      <p className="text-sm text-gray-500 mt-1">{property.locality}</p>
 
-      {/* ================= PROPERTY CARD ================= */}
-      <div
-        className="
-          bg-white
-          rounded-2xl
-          shadow-md
-          hover:shadow-2xl
-          transition
-          duration-300
-          overflow-hidden
-          border border-gray-100
-          md:h-[250px]
-        "
-      >
-        <div className="flex flex-col md:flex-row h-full">
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-4">
+                        <div>
+                          <p className="text-sm text-gray-500">STATUS : <span className="font-semibold text-blue-800">Available</span></p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-gray-500">TYPE : <span className="font-semibold text-gray-800">{property.propertyCategory}</span></p>
+                        </div>
+                      </div>
 
-          {/* IMAGE */}
-          <div className="relative md:w-[35%] overflow-hidden">
+                      <div className="flex-1" />
 
-            <Image
-              src={
-                property?.media?.url
-                  ? property?.media?.url
-                  : "https://res.cloudinary.com/dbihlu2ve/image/upload/v1778830985/GurgaonProperties/ioopp3bvwvbtg7nqegiy.webp"
-              }
-              unoptimized
-              alt={property.title}
-              width={600}
-              height={400}
-              className="w-full h-60 md:h-full object-cover"
-            />
+                      {/* BUTTONS */}
+                      <div className="flex flex-col md:flex-row justify-between items-center border-t mt-4 pt-4 gap-4">
+                        <button onClick={() => { setSelectedProperty(property.title); setOpen(true); }} className="border border-[#0046FF] text-[#0046FF] px-5 py-2 rounded-lg hover:bg-blue-50 transition w-full md:w-auto font-medium">
+                          Price on Call
+                        </button>
+                        <ViewDetailsButton slug={property.slug} href={`https://www.dealacres.com/property/${property.slug}`} />
+                      </div>
 
-            {/* RIBBON */}
-            <span
-              onClick={() => {
-                setSelectedProperty(property.title);
-                setOpen(true);
-              }}
-              className="
-                absolute top-4 left-0
-                bg-[#0046FF]
-                text-white
-                text-xs md:text-sm
-                px-3 py-1
-                font-semibold
-                shadow-lg
-                rounded-r-full
-                tracking-wide
-                cursor-pointer
-              "
-            >
-              {property.propertyType}
-            </span>
+                      {/* EXPLORE MORE LINKS */}
 
-          </div>
+                      <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200 text-sm text-gray-500 font-medium">
 
-          {/* CONTENT */}
-          <div className="p-6 flex-1 flex flex-col">
+                        {/* Left Link */}
+                        <Link
+                          href={`https://www.dealacres.com/properties/${typeSlug}-for-sale-in-gurgaon`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={handlePropertyClick}
+                          className="group text-left flex items-center gap-1"
+                        >
+                          <h4 className="font-semibold text-gray-700 group-hover:text-[#0046FF] transition-colors underline-offset-2 hover:underline">
+                            Explore more
+                          </h4>
+                          <span className="text-[#0046FF] group-hover:translate-x-1 transition-transform duration-300">→</span>
+                        </Link>
 
-            <h3 className="text-xl font-bold text-gray-900">
-              {property.title}
-            </h3>
+                        {/* Vertical Divider */}
+                        {/* <div className="h-5 w-px bg-gray-300 mx-4"></div> */}
 
-            <p className="text-sm text-gray-500 mt-1 flex items-center gap-1">
+                        {/* Right Link */}
+                        <Link
+                          href="https://www.dealacres.com/sell-property"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group text-right flex items-center gap-1"
+                        >
+                          <h4 className="font-semibold text-gray-700 group-hover:text-[#0046FF] transition-colors underline-offset-2 hover:underline">
+                            Free Sell Property
+                          </h4>
+                          <span className="text-[#0046FF] group-hover:translate-x-1 transition-transform duration-300">→</span>
+                        </Link>
 
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-4 h-4 text-gray-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243A8 8 0 1117.657 16.657z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-              {property.locality}
-
-            </p>
-
-            {/* DETAILS */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-6 relative">
-
-              <div className="relative">
-                <p className="text-sm text-gray-500">
-                  STATUS :
-                  <span className="font-semibold text-blue-800 text-md">
-                    {" "}
-                    Available
-                  </span>
-                </p>
-
-                <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-12 w-px bg-gray-300"></div>
+                {(index + 1) % 10 === 0 && <NearbyLocations blockIndex={Math.floor(index / 10)} />}
               </div>
+            );
+          })}
 
-              <div>
-                <p className="text-sm text-gray-500">
-                  TYPE :
-                  <span className="font-semibold text-gray-800 text-md">
-                    {" "}
-                    {property.propertyCategory}
-                  </span>
-                </p>
-              </div>
-
-            </div>
-
-            <div className="flex-1" />
-
-            {/* BUTTONS */}
-            <div className="flex flex-col md:flex-row justify-between items-center border-t mt-6 pt-4 gap-4">
-
-              <button
-                onClick={() => {
-                  setSelectedProperty(property.title);
-                  setOpen(true);
-                }}
-                className="
-                  border border-[#0046FF]
-                  text-[#0046FF]
-                  px-5 py-2
-                  rounded-lg
-                  hover:bg-blue-50
-                  transition
-                  w-full md:w-auto
-                  font-medium
-                "
-              >
-                Price on Call
-              </button>
-
-              <ViewDetailsButton
-                slug={property.slug}
-                href={`https://www.dealacres.com/property/${property.slug}`}
-              />
-
-            </div>
-
-          </div>
+          <Pagination totalItems={totalItems} itemsPerPage={itemsPerPage} currentPage={page} onPageChange={setPage} />
         </div>
-      </div>
 
-      {/* ================= EVERY 10 CARDS ================= */}
-       {(index + 1) % 10 === 0 && (
-  <NearbyLocations blockIndex={Math.floor(index / 10)} />
-)}
-
-    </div>
-  ))}
-
-  {/* ================= PAGINATION ================= */}
-  <Pagination
-    totalItems={totalItems}
-    itemsPerPage={itemsPerPage}
-    currentPage={page}
-    onPageChange={setPage}
-  />
-
-</div>
-
-        {/* ================= SIDEBAR ================= */}
         <div className="lg:col-span-1 sticky top-28">
           <SidebarEnquiryForm />
         </div>
-
       </div>
 
-      <ContactPopup
-        isOpen={open}
-        onClose={() => setOpen(false)}
-        propertyTitle={selectedProperty}
-      />
+      <ContactPopup isOpen={open} onClose={() => setOpen(false)} propertyTitle={selectedProperty} />
     </section>
   );
 }
