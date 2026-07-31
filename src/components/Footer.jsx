@@ -19,15 +19,15 @@ export default function Footer() {
   const [showAll, setShowAll] = useState(false);
 
   const displayLocations =
-  localities && localities.length > 0
-    ? localities
-    : locations;
+    localities && localities.length > 0
+      ? localities
+      : locations;
 
-const initialCount = 19;
+  const initialCount = 19;
 
-const visibleLocations = showAll
-  ? displayLocations
-  : displayLocations.slice(0, initialCount);
+  const visibleLocations = showAll
+    ? displayLocations
+    : displayLocations.slice(0, initialCount);
 
   return (
     <footer className="bg-[#0b1120] pt-16 pb-8 px-4 border-t border-[#1a2238] overflow-visible">
@@ -57,12 +57,12 @@ const visibleLocations = showAll
               <div key={index} className="relative group overflow-visible">
 
                 <Link
-key={index}
-  href={`https://www.dealacres.com/properties/2-bhk-flat-for-sale-in-${createSlug(loc)}-gurgaon`}
-  target="_blank"
-  rel="noopener noreferrer"                   className="block truncate text-gray-400 hover:text-white transition duration-300"
+                  key={index}
+                  href={`https://www.dealacres.com/properties/2-bhk-flat-for-sale-in-${createSlug(loc)}-gurgaon`}
+                  target="_blank"
+                  rel="noopener noreferrer" className="block truncate text-gray-400 hover:text-white transition duration-300"
                 >
-                  2BHK Flats For Sale in {loc}, Gurgaon
+                  2BHK Flats For Sale in {loc}
                 </Link>
 
                 <div className="
@@ -73,7 +73,7 @@ key={index}
                   px-3 py-1.5 rounded-md shadow-lg
                   border border-[#0046FF]/40 z-[9999]
                   pointer-events-none">
-                  2BHK Flats For Sale in {loc}, Gurgaon
+                  2BHK Flats For Sale in {loc}
                 </div>
 
               </div>
@@ -103,42 +103,42 @@ key={index}
 
           </div>
         </div>
-{/* 🔥 Bottom Navigation Buttons - CENTER */}
-<div className="border-t border-[#1a2238] pt-6 mt-10 mb-6">
-  <div className="flex justify-center items-center">
-    
-    <div className="flex flex-wrap gap-6 justify-center text-sm">
-      <Link
-        href="/about"
-        className="text-gray-400 hover:text-[#0046FF] transition"
-      >
-        About
-      </Link>
+        {/* 🔥 Bottom Navigation Buttons - CENTER */}
+        <div className="border-t border-[#1a2238] pt-6 mt-10 mb-6">
+          <div className="flex justify-center items-center">
 
-      <Link
-        href="/blog"
-        className="text-gray-400 hover:text-[#0046FF] transition"
-      >
-        Blog
-      </Link>
+            <div className="flex flex-wrap gap-6 justify-center text-sm">
+              <Link
+                href="/about"
+                className="text-gray-400 hover:text-[#0046FF] transition"
+              >
+                About
+              </Link>
 
-      <Link
-        href="/contact"
-        className="text-gray-400 hover:text-[#0046FF] transition"
-      >
-        Contact
-      </Link>
+              <Link
+                href="/blog"
+                className="text-gray-400 hover:text-[#0046FF] transition"
+              >
+                Blog
+              </Link>
 
-      <Link
-        href="/how-it-works"
-        className="text-gray-400 hover:text-[#0046FF] transition"
-      >
-        How It's Work
-      </Link>
-    </div>
+              <Link
+                href="/contact"
+                className="text-gray-400 hover:text-[#0046FF] transition"
+              >
+                Contact
+              </Link>
 
-  </div>
-</div>
+              <Link
+                href="/how-it-works"
+                className="text-gray-400 hover:text-[#0046FF] transition"
+              >
+                How It's Work
+              </Link>
+            </div>
+
+          </div>
+        </div>
         {/* BOTTOM */}
         <div className="border-t border-[#1a2238] pt-6 flex flex-col md:flex-row items-center justify-between">
           <p className="text-sm text-gray-500 text-center md:text-left">
@@ -146,16 +146,16 @@ key={index}
           </p>
 
           <p className="text-sm text-gray-500 mt-3 md:mt-0">
-  Designed By - {" "}
-  <Link
-    href="https://www.parcharmanch.com/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="hover:text-white transition cursor-pointer underline-offset-4 hover:underline"
-  >
-    Parchar Manch
-  </Link>
-</p>
+            Designed By - {" "}
+            <Link
+              href="https://www.parcharmanch.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition cursor-pointer underline-offset-4 hover:underline"
+            >
+              Parchar Manch
+            </Link>
+          </p>
         </div>
 
       </div>
