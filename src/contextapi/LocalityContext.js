@@ -17,6 +17,7 @@ export const LocalityProvider = ({ children }) => {
       const res = await axios.get(
         "https://gurgaon-backend.onrender.com/api/listed-properties/getUniqueLocalities"
       );
+      // console.log(res.data);
       if (res.data && res.data.success) {
         setLocalities(res.data.data || []);
       } else {

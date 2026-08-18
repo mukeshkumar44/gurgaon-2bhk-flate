@@ -272,7 +272,8 @@ export default function FilterProperties({ area }) {
 
             <ViewDetailsButton
               slug={property.slug}
-              href={`https://www.dealacres.com/property/${property.slug}`}
+               href={`https://www.dealacres.com/property/${property.slug}`}
+                      id={property._id}
             />
 
           </div>

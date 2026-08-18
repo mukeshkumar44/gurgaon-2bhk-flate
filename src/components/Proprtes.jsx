@@ -103,7 +103,12 @@ const { handlePropertyClick } = useClickLimit();
                         <button onClick={() => { setSelectedProperty(property.title); setOpen(true); }} className="border border-[#0046FF] text-[#0046FF] px-5 py-2 rounded-lg hover:bg-blue-50 transition w-full md:w-auto font-medium">
                           Price on Call
                         </button>
-                        <ViewDetailsButton slug={property.slug} href={`https://www.dealacres.com/property/${property.slug}`} />
+                        <ViewDetailsButton 
+  slug={property.slug} 
+   href={`https://www.dealacres.com/property/${property.slug}`}
+                      
+  id={property._id} /* <-- Yeh line add karni hai */
+/>
                       </div>
 
                       {/* EXPLORE MORE LINKS */}
