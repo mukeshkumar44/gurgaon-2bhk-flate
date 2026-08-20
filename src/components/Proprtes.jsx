@@ -105,7 +105,7 @@ const { handlePropertyClick } = useClickLimit();
                         </button>
                         <ViewDetailsButton 
   slug={property.slug} 
-   href={`https://www.dealacres.com/property/${property.slug}`}
+   href={("#" /* `https://www.dealacres.com/property/${property.slug}` */)}
                       
   id={property._id} /* <-- Yeh line add karni hai */
 />
@@ -117,7 +117,7 @@ const { handlePropertyClick } = useClickLimit();
 
                         {/* Left Link */}
                         <Link
-                          href={`https://www.dealacres.com/properties/${typeSlug}-for-sale-in-gurgaon`}
+                          href={("#" /* `https://www.dealacres.com/properties/${typeSlug}-for-sale-in-gurgaon` */)}
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={handlePropertyClick}
@@ -134,7 +134,7 @@ const { handlePropertyClick } = useClickLimit();
 
                         {/* Right Link */}
                         <Link
-                          href="https://www.dealacres.com/sell-property"
+                          href={"#" /* "https://www.dealacres.com/sell-property" */}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="group text-right flex items-center gap-1"

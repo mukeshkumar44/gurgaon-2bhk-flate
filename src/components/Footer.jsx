@@ -58,7 +58,7 @@ export default function Footer() {
 
                 <Link
                   key={index}
-                  href={`https://www.dealacres.com/properties/2-bhk-flat-for-sale-in-${createSlug(loc)}-gurgaon`}
+                  href={("#" /* `https://www.dealacres.com/properties/2-bhk-flat-for-sale-in-${createSlug(loc)}-gurgaon` */)}
                   target="_blank"
                   rel="noopener noreferrer" className="block truncate text-gray-400 hover:text-white transition duration-300"
                 >

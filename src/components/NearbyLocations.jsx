@@ -151,7 +151,7 @@ if (
                   key={item._id}
                   onClick={() =>
                     window.open(
-                      `https://www.dealacres.com/properties/2-bhk-flats-for-sale-in-gurgaon`,
+                      ("#" /* `https://www.dealacres.com/properties/2-bhk-flats-for-sale-in-gurgaon` */),
                       "_blank"
                     )
                   }
