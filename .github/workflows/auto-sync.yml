@@ -1,4 +1,4 @@
-name: Auto Sync to Project Repos
+name: Auto Sync to project repos
 
 on:
   push:
@@ -10,39 +10,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Source Code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Configure Git
+      - name: Configure git
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "github-actions"
 
-      - name: Check Current Commit
-        run: |
-          git status
-          git log -1 --oneline
-
+      # Existing Gurgaon Repo
       # - name: Sync to Gurgaon Repo
-      #   env:
-      #     TOKEN: ${{ secrets.GURGAON_ACCESS_TOKEN }}
+      #   continue-on-error: true
       #   run: |
-      #     git remote add mirror https://x-access-token:${TOKEN}@github.com/dagunjan17-star/2-BHK-Flat-For-Sale.git
+      #     git remote remove mirror || true
+      #     git remote add mirror https://x-access-token:${{ secrets.GURGAON_ACCESS_TOKEN }}@github.com/dealacresGurgaon/2-BHK-Flat-For-Sale.git
       #     git push mirror HEAD:main --force
 
-      # - name: Sync to Gurgaon Projects Repo
-      #   env:
-      #     TOKEN: ${{ secrets.MUKESH_PROJECTS_ACCESS_TOKEN }}
-      #   run: |
-      #     git remote add projects https://x-access-token:${TOKEN}@github.com/mukeshkumar44/gurgaon-2bhk-flate.git
-      #     git push projects HEAD:main --force
-
-      - name: Sync to Nagori Gate Repo
-        env:
-          TOKEN: ${{ secrets.NAGORI_GATE_PROJECTS_ACCESS_TOKEN }}
+      # Gurgaon Projects Repo
+      - name: Sync to Gurgaon Projects Repo
+        continue-on-error: true
         run: |
-          git remote add nagori https://x-access-token:${TOKEN}@github.com/dagunjan17-star/2-bhk-flat-for-sale.git
+          git remote remove projects || true
+          git remote add projects https://x-access-token:${{ secrets.MUKESH_PROJECTS_ACCESS_TOKEN }}@github.com/mukeshkumar44/gurgaon-2bhk-flate.git
+          git push projects HEAD:main --force
+
+      # Nagori Gate Repo
+      - name: Sync to Nagori Gate 2 BHK Flat For Sale
+        continue-on-error: true
+        run: |
+          git remote remove nagori || true
+          git remote add nagori https://x-access-token:${{ secrets.NAGORI_GATE_PROJECTS_ACCESS_TOKEN }}@github.com/dagunjan17-star/2-bhk-flat-for-sale.git
           git push nagori HEAD:main --force
