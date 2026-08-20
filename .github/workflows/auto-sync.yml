@@ -33,12 +33,12 @@ jobs:
       #     git remote add mirror https://x-access-token:${TOKEN}@github.com/dagunjan17-star/2-BHK-Flat-For-Sale.git
       #     git push mirror HEAD:main --force
 
-      - name: Sync to Gurgaon Projects Repo
-        env:
-          TOKEN: ${{ secrets.MUKESH_PROJECTS_ACCESS_TOKEN }}
-        run: |
-          git remote add projects https://x-access-token:${TOKEN}@github.com/mukeshkumar44/gurgaon-2bhk-flate.git
-          git push projects HEAD:main --force
+      # - name: Sync to Gurgaon Projects Repo
+      #   env:
+      #     TOKEN: ${{ secrets.MUKESH_PROJECTS_ACCESS_TOKEN }}
+      #   run: |
+      #     git remote add projects https://x-access-token:${TOKEN}@github.com/mukeshkumar44/gurgaon-2bhk-flate.git
+      #     git push projects HEAD:main --force
 
       - name: Sync to Nagori Gate Repo
         env:
